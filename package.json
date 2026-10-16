@@ -1,6 +1,6 @@
 {
   "name": "@pindustries/suncharts-sdk",
-  "version": "0.1.0",
+  "version": "26.1016.1",
   "description": "Official TypeScript/JavaScript SDK for the SunCharts API (generated from the OpenAPI spec + OAuth2/retry/pagination helpers)",
   "license": "MIT",
   "author": "P.Industries",

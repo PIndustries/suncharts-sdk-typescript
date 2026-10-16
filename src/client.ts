@@ -2,7 +2,7 @@ import * as gen from "./generated/index.js";
 
 export const PRODUCTION_BASE_URL = "https://api.suncharts.app";
 export const SANDBOX_BASE_URL = "https://sandbox-api.suncharts.app";
-export const USER_AGENT = "suncharts-sdk-typescript/0.1.0";
+export const USER_AGENT = "suncharts-sdk-typescript/26.10.16.1";
 const IDEMPOTENT = new Set(["GET", "HEAD", "PUT", "DELETE", "OPTIONS"]);
 
 type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;

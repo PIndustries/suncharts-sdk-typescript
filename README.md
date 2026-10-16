@@ -13,7 +13,7 @@ credentials to a browser or mobile app. MIT licensed.
 ## Install
 
 ```bash
-npm install github:PIndustries/suncharts-sdk-typescript#v0.1.0
+npm install github:PIndustries/suncharts-sdk-typescript#26.10.16.1
 ```
 
 (npm package `@pindustries/suncharts-sdk` coming soon.)
@@ -81,3 +81,9 @@ scripts/generate.sh          # regenerate src/generated from openapi.json (needs
 
 `openapi.json` is synced from the API automatically (a pull request is opened when the spec changes); CI fails
 if `src/generated` is not exactly what the generator produces. Don't edit `src/generated` by hand.
+
+## Versioning
+
+Releases use the P.Industries format `YY.MM.DD.<build-of-day>` (UTC date), e.g. `26.10.16.1`; the git tag is exactly
+that (no `v`). npm needs 3-part SemVer, so `package.json` uses `YY.(MM*100+DD).BUILD`: `26.10.16.1` → `26.1016.1` (Jan 5 → `27.105.1`; ordering is preserved). Bump with `scripts/version.sh set $(scripts/version.sh next)`; merging a `VERSION` change to
+`main` tags the release automatically (`.github/workflows/release.yml`).
