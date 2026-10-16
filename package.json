@@ -1,0 +1,27 @@
+{
+  "name": "@pindustries/suncharts-sdk",
+  "version": "0.1.0",
+  "description": "Official TypeScript/JavaScript SDK for the SunCharts API (generated from the OpenAPI spec + OAuth2/retry/pagination helpers)",
+  "license": "MIT",
+  "author": "P.Industries",
+  "homepage": "https://api.suncharts.app/docs",
+  "repository": { "type": "git", "url": "git+https://github.com/PIndustries/suncharts-sdk-typescript.git" },
+  "keywords": ["suncharts", "ehr", "fhir", "sdk", "oauth2"],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=18.17" },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test test/",
+    "generate": "scripts/generate.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.6.0"
+  }
+}
