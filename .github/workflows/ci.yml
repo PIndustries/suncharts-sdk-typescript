@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, phx, fleet, org]
     strategy: { matrix: { node: ["18", "20", "22"] } }
     steps:
       - uses: actions/checkout@v4
@@ -15,16 +15,18 @@ jobs:
       - run: npm test
   generated-up-to-date:
     # src/generated must be exactly what scripts/generate.sh produces from openapi.json.
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, phx, fleet, org]
     steps:
       - uses: actions/checkout@v4
+      - name: per-runner cache dir (runners share one $HOME on the fleet host)
+        run: echo "XDG_CACHE_HOME=$RUNNER_TOOL_CACHE/xdg-cache" >> "$GITHUB_ENV"
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "21" }
       - run: scripts/generate.sh
       - run: git status --porcelain && git diff --exit-code
   sandbox-smoke:
     if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, phx, fleet, org]
     env:
       SUNCHARTS_CLIENT_ID: ${{ secrets.SUNCHARTS_SANDBOX_CLIENT_ID }}
       SUNCHARTS_CLIENT_SECRET: ${{ secrets.SUNCHARTS_SANDBOX_CLIENT_SECRET }}
